@@ -1,23 +1,24 @@
 pipeline {
     agent any
     stages {
-        stage ('checkout'){
+        stage('checkout'){
             steps {
                 git 'https://github.com/viswanathan16/JS-WebApp.git'
             }
-        stage ('Install Dependencies'){
+        }
+        stage('Install Dependencies'){
             steps {
-                sh echo 'Installing Dependencies'
+                sh 'echo Installing Dependencies'
                 sh 'npm install'
             }
         }    
-        stage ('Run Tests'){
+        stage('Run Tests'){
             steps {
-                sh echo 'Running Tests'
+                sh 'echo Running Tests'
                 sh 'npm test'
             }
         }
-        post {
+    post {
             success {
                 archiveArtifacts artifacts: '**/test-results.xml', fingerprint: true
                 junit 'test-results.xml'
@@ -29,4 +30,4 @@ pipeline {
         }
     }
  }
-}
+
