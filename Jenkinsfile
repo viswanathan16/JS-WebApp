@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('checkout'){
             steps {
-                git 'https://github.com/viswanathan16/JS-WebApp.git'
+                git url: 'https://github.com/viswanathan16/JS-WebApp.git' ,branch: 'main'
             }
         }
         stage('Install Dependencies'){
