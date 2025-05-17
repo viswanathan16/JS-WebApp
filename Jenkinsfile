@@ -19,13 +19,13 @@ pipeline {
             }
         }
     post {
-       success {
-                archiveArtifacts artifacts: '**/test-results.xml', fingerprint: true
-                junit 'test-results.xml'
+        success {
+            archiveArtifacts artifacts: '**/test-results.xml', fingerprint: true
+            junit 'test-results.xml'
             }
-       failure {
-                echo 'Tests failed'
-                emailext body: 'Some Error occurred. Please check it out', subject: 'Error ', to: 'viswanathanram1607@gmail.com'
+        failure {
+            echo 'Tests failed'
+            emailext body: 'Some Error occurred. Please check it out', subject: 'Error ', to: 'viswanathanram1607@gmail.com'
             }
         }
     }
